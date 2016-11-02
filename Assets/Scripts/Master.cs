@@ -6,25 +6,47 @@ public class Master : MonoBehaviour {
     public static Master instance = null;
     public List<Boids> boids = new List<Boids>();
     public Vector2 mousePosition;
+    public float speed;
+
+    public int xBorder;
+    public int yBorder;
+
+    [Range(0,3)]
+    public float seperationValue;
+
+    [Range(0, 3)]
+    public float alignmentValue;
+
+
+    [Range(0, 3)]
+    public float cohesionValue;
+
+    public bool seperationOn;
+    public bool alignmentOn;
+    public bool cohesionOn;
+
+    
+
     //public Spawner spawner;
 
     public Vector2 movePoint;
     void Awake()
     {
-        //Check if there is already an instance of SoundManager
+       
         if (instance == null)
             //if not, set it to this.
             instance = this;
         //If instance already exists:
         else if (instance != this)
-            //Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
+            //Destroy this, this enforces our singleton pattern so there can only be one instance of this class.
             Destroy(gameObject);
 
        
     }
     // Use this for initialization
     void Start () {
-        //spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        
+
 	}
 	
 	// Update is called once per frame
