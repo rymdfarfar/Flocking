@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour {
     public Vector3 spawnPoint;
     private float randomX = 0;
     private float randomY = 0;
-    private bool spawning = true;
+    public bool spawning = true;
     // Use this for initialization
     void Start()
     {
@@ -21,8 +21,9 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
-        if(spawning)
+
+        
+        if (spawning)
         {
             for (int i = 0; i < boidsToSpawn; ++i)
             {
@@ -31,13 +32,13 @@ public class Spawner : MonoBehaviour {
                 randomY = Random.Range(spawnPoint1.transform.position.y, spawnPoint2.transform.position.y);
                 spawnPoint = new Vector3(randomX, randomY, 0);
 
-              tempboid = (Boids)Instantiate(boid, spawnPoint, Quaternion.identity);
+                tempboid = (Boids)Instantiate(boid, spawnPoint, Quaternion.identity);
                 Master.instance.boids.Add(tempboid);
 
                 if ((i + 2) > boidsToSpawn)
                     spawning = false;
             }
         }
-       
+
     }
 }

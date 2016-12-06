@@ -7,6 +7,7 @@ public class Master : MonoBehaviour {
     public List<Boids> boids = new List<Boids>();
     public Vector2 mousePosition;
     public float speed;
+     public int boidsToSpawn;
 
     public int xBorder;
     public int yBorder;
@@ -32,6 +33,7 @@ public class Master : MonoBehaviour {
     public Vector2 movePoint;
     void Awake()
     {
+        boidsToSpawn = GameObject.FindObjectOfType<Spawner>().boidsToSpawn;
        
         if (instance == null)
             //if not, set it to this.
@@ -54,7 +56,11 @@ public class Master : MonoBehaviour {
         Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         movePoint = mousePosition;
-       
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            Time.timeScale = 0.0f;
+        }
     }
 
     
